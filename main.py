@@ -1,29 +1,26 @@
-# Loading GPT 3.5, functional chatbot in terminal
-
-## sudo apt install python3-pip
-## pip install openai
-## pip install gTTS
-
 import os
-from typing import Mapping
-
+os.system("pip install --upgrade pip")
+os.system("pip install openai")
+os.system("pip install speechrecognition")
+os.system("pip install openai==0.28")
 import openai
-import speech_recognition as sr
+from typing import Mapping
 from gtts import gTTS
+import speech_recognition as sr
 
-OPENAI_API_KEY = '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'
-openai.api_key = OPENAI_API_KEY
-# Initialize the recognizer
+openai.api_key = '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'
+
 recognizer = sr.Recognizer()
 # Ask for speech input
 print('Hello, I am DONNA, your personal secretary. What do you need?')
-if method = 1:
+mth = input()
+if mth == 1:
   with sr.Microphone() as source:
     print("Say something:")
     audio = recognizer.listen(source)
     input_text = recognizer.recognize_google(audio)
-if method = 2:
-  input_text = input("What's on your mind?":)
+if mth == 2:
+  input_text = input("What's on your mind?")
   messages=[{"role": "user", "content": a}]
 
 response = openai.ChatCompletion.create(
@@ -50,4 +47,3 @@ while True:
   tts = gTTS(text=response['choices'][0]['text'], lang='en')
   tts.save("response.mp3")
   os.system("mpg123 response.mp3")
-  
