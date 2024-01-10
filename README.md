@@ -1,4 +1,5 @@
-# sosa, a definitive ai assistant.
+# sosa.
+# my code is the definition of spray and pray.
 ## google calendar was being a pain so i did what any reasonable person would do and code a knockoff siri :D
 i had this idea in period 2 for a "a real assistant to synthesize my thoughts and plan my day".
 
