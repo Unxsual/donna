@@ -8,7 +8,7 @@ else:
   print("loading program")
 import openai
 
-openai.api_key = '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'
+openai.api_key = ''
 
 model_id = 'gpt-3.5-turbo'
 
