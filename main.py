@@ -7,8 +7,9 @@ if upgradeq.strip() == "Y":
 else:
   print("loading program")
 import openai
+from gtts import gTTS
 
-openai.api_key = ''
+openai.api_key = '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'
 
 model_id = 'gpt-3.5-turbo'
 
@@ -26,7 +27,11 @@ conversation.append({'role': 'system', 'content': "You are an AI assistant."})
 conversation = ChatGPT_conversation(conversation)
 response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1]['content'].strip()))
 initial = (response.replace('assistant: ', ''))
-print("Hey, I'm Sosa, your personal assistant! What's up?")
+print("Hey, I'm your personal assistant! What's up?")
+tts = gTTS(text="Hey, I'm your personal assistant! What's up?", lang='en', tld='co.za')
+tts.save("greeting.mp3")
+os.system("start greeting.mp3")
+
 
 while True:
   prompt = input("You: ")
@@ -46,3 +51,7 @@ while True:
     response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1]['content'].strip()))
     final = (response.replace('assistant: ', ''))
     print(final)
+    tts = gTTS(text=final, lang='en', tld='co.za')
+    tts.save("response.mp3")
+# to start the file from python
+    os.system("start response.mp3")
