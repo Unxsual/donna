@@ -22,7 +22,7 @@ def ChatGPT_conversation(conversation):
   return conversation
 
 conversation = []
-conversation.append({'role': 'system', 'content': "Say nothing."})
+conversation.append({'role': 'system', 'content': "You are an AI assistant."})
 conversation = ChatGPT_conversation(conversation)
 response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1]['content'].strip()))
 initial = (response.replace('assistant: ', ''))
@@ -33,8 +33,9 @@ while True:
   if prompt.strip() == "Print conversation.":
     print(conversation)
   elif prompt.strip() == "Release summary.":
-    conversation.append({'role': 'user', 'content': 'Summarize conversation.'})
-    response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1]['content'].strip()))
+    prompt = "Summarize what i've said in point form."
+    conversation.append({'role': 'user', 'content': prompt})
+    response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1][prompt].strip()))
     final = (response.replace('assistant: ', ''))
     print(final)
   elif prompt.strip() == "Start thought synthesizer.":
