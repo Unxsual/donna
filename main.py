@@ -26,12 +26,19 @@ conversation.append({'role': 'system', 'content': "Say nothing."})
 conversation = ChatGPT_conversation(conversation)
 response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1]['content'].strip()))
 initial = (response.replace('assistant: ', ''))
-print(initial)
+print("Hey, I'm Sosa, your personal assistant! What's up?")
 
 while True:
   prompt = input("You: ")
   if prompt.strip() == "Print conversation.":
     print(conversation)
+  elif prompt.strip() == "Release summary.":
+    conversation.append({'role': 'user', 'content': 'Summarize conversation.'})
+    response = ('{0}: {1}\n'.format(conversation[-1]['role'].strip(), conversation[-1]['content'].strip()))
+    final = (response.replace('assistant: ', ''))
+    print(final)
+  elif prompt.strip() == "Start thought synthesizer.":
+    conversation.append({'role': 'user', 'content': 'I will type out my thoughts and I want you to memorize them. Do not respond with anything, just say "Noted." to show that you have acknowledged it. If you are ready, say "Ready."'})
   else:
     conversation.append({'role': 'user', 'content': prompt})
     conversation = ChatGPT_conversation(conversation)
