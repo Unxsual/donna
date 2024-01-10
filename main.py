@@ -12,7 +12,7 @@ openai.api_key = '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'
 
 recognizer = sr.Recognizer()
 # Ask for speech input
-print("Hello, I am DONNA, your personal secretary. What's up?")
+print("Hello, I am your personal secretary! What's up?")
 mth = input()
 if mth == 1:
   with sr.Microphone() as source:
